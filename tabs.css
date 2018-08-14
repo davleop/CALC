@@ -1,0 +1,144 @@
+body {
+	font-family: Arial;
+	background-color: #d2d2d2;
+}
+
+/* Style the tab */
+div.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+div.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+h4 {
+
+	margin: auto; 
+
+}
+
+img {
+
+	text-align: center;
+}
+
+#Main {
+	background-color: #3f7871;
+}
+
+#Explanation {
+	background-color: #ffffff;
+}
+
+#chart-div {
+
+	width: 100%;
+	text-align: center;
+
+}
+
+.divider {
+	width: 100px;
+	height: auto;
+	display: inline-block;
+}
+
+div.swat {
+
+	overflow: hidden;
+    border: none;
+    /*background-color: #f1f1f1;*/
+    margin: 10px;
+
+}
+
+div.swat button {
+
+	background-color: #113344 /*#590D0D/*#FFA232*/;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    border-radius: 50%;
+    color: #FFFFFF;
+    margin: 10px;
+
+}
+
+div.swat button:hover {
+
+    background-color: #002344;
+
+}
+
+div.swat button.active {
+
+    background-color: #FFFFFF;
+
+}
+
+div.data {
+
+	background-color: #f1f8e9/*#FFFFFF*/;
+	width: 285px;
+	padding: 10px;
+	height: 360px;
+	border-radius: 10%;
+
+}
+
+div.chart_div {
+
+	border-radius: 10%;
+
+}
+
+#block {
+    display: inline-block;
+}
+
+p.para {
+
+    margin-left: 180px;
+    margin-right: 180px;
+    font-family: Cambria;
+
+}
+
+p {
+
+    margin-right: 100px;
+
+}

@@ -1,0 +1,397 @@
+<!DOCTYPE html> <!-- ++++++++ THIS IS THE prediction data ++++++++++ -->
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Aaron Lee, David Penn</title>
+
+        <!-- 1. Include CSS -->
+        <link type="text/css" rel="stylesheet" href="jquery-nstslider-master/dist/jquery.nstSlider.css">
+        <link type="text/css" rel="stylesheet" href="tabs.css">
+		<link type="text/css" rel="stylesheet" href="grid/simplegrid.css">
+
+			 <!--<script src='MathJax-master/MathJax.js'></script>       --> 
+	    	<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'>
+	    		// Docs for refference: http://docs.mathjax.org/en/latest/
+	    		// I uploaded everything. For now, you need internet to
+	    		// run MathJax. I'll figure out an offline solution later.
+	    	</script>
+
+	    	<script>
+			MathJax.Hub.Config({
+				tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+			});
+			</script>
+    </head>
+    <body>
+
+    	<script src="math.js"></script>
+
+	    <script type="text/javascript">
+
+			// Calculus methods for deriving:
+			// ~ The volume of sphere.
+			// ~ The surface area of a sphere.
+			// ~ The radius of the sphere.
+			//
+			// All code after this comment block is made
+			// by David Penn and Aaron Lee.
+			//
+			// This will NOT be maintained after the 
+			// project we have been asigned is due.
+
+			// Library to import all math, but with derivatives
+			// and constants up to the 14th decimal place is math.js
+			
+			function getRadiusRate() {
+
+				//document.write(rate);
+
+				return (-0.5); //whatever constant we choose for H2O IN MM
+
+				// const based off of disolving rate maybe: r = -0.6203504909 @ -1 mm^3
+				// this is 1 temporarily
+
+			}
+
+			function getVolumeRate() {
+
+				return(1); // temp in mm
+
+			}
+
+			function getSARate() {
+
+				return(1); // temp in mm
+
+			}
+
+			function volumeOfSphere(radius) {
+
+				//      4		  3
+				// V = --- * π * r
+				//      3	
+				return ((4/3) * math.PI * ((radius) ** 3));
+
+			}
+
+			function surfaceAreaSphere(radius) {
+
+				//		         2
+				// SA = 4 * π * r
+				//
+				return (4 * math.PI * ((radius) ** 2));
+
+			}
+
+			function deriveVolume_OverTime(radius) {
+
+				//  dV	     	   2	dr
+				// ---- = 4 * π * r  * ----
+				// 	dt			        dt
+				return (4 * math.PI * ((radius) ** 2) * getRadiusRate());
+
+			}
+
+			function deriveSurfaceArea_OverTime(radius) {
+
+				//  dSA 			    dr
+				// ----- = 8 * π * r * ----
+				//  dt 				    dt
+				return (8 * math.PI * radius * getRadiusRate());
+
+			}
+
+			/*
+			function deriveRadius_OverTime_Wvolume(radius) {
+
+				//     dV
+				//    ----
+				//     dt        dr
+				// ---------- = ----
+				// 		    2    dt
+				// 4 * π * r     
+				// 
+				return ((getVolumeRate()) / (4 * math.PI * ((radius) ** 2)));
+
+			}
+
+			function deriveRadius_OverTime_WsurfaceArea(radius) {
+
+				// 	   dSA
+				//    ------
+				//      dt         dr
+				// ------------ = ----
+				//                 dt
+				//   8 * π * r
+				// 
+				return ((getSARate()) / (8 * math.PI * radius));
+
+			}
+			*/
+
+		</script>
+
+        <script type="text/javascript">
+        	function redirect() {
+        		var Makers = document.getElementById("Makers");
+        		window.location.href = "makers.html";
+        	}
+
+        	function flip() {
+       			var swatch = document.getElementById("Switch")
+       			window.location.href = "index.html";
+        	}
+
+        </script>
+
+        <h1 align="center">Calculating the Derivatives over Time of:</h1>
+        <h2 align="center">Surface area, Volume, and Radius.</h2>
+        <h3>Predicted Data Points</h3>
+
+        <div class="tab">
+        	<button class = "tablinks" onclick="openTab(event, 'Main')" id = "defaultOpen">Main</button>
+        	<button class = "tablinks" onclick="openTab(event, 'Explanation')">Explanation</button>
+        	<button id = "Makers" onclick='redirect()'>Makers</button>
+        </div>
+
+        <br>
+
+        <div id = "Main" class = "tabcontent" >
+	        <!-- 2. Write markup for the slider -->
+	        <div class="grid grid-pad">
+	        	<div class="col-1-2">
+	        		<div class="content">
+
+	        			<h3>Playground: </h3>
+
+	        			<!-- Switch -->
+	        			<div class = "swat">
+	        				<button id="Switch" onclick="flip()">Experiment</button>
+	        				<button id="asdf">&nbsp;Prediction&nbsp;</button>
+	        			</div>
+
+	        			<br>
+	        			<br>	
+
+	        			<h4>Change Radius:&nbsp;</h4>
+
+	        			<br>
+
+
+
+				        <div class="nstSlider" 
+				            data-range_min="5" data-range_max="55"   
+				            data-cur_min="30">
+				            <div class="highlightPanel"></div>
+				            <div class="bar"></div>	            
+				            <div class="leftGrip"></div>
+				        </div>
+
+				        <br>
+				        <br>
+				        
+				        <div class="data">
+				        	<h5>Radius&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<div class="radius"></div>&nbsp;<div id="block">$$mm$$</div></h5>
+				        	<h5>Volume&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<div class="spherevolume"></div>&nbsp;<div id="block">$$mm^3$$</div></h5>
+				        	<h5>Surface Area&nbsp;:&nbsp;<div class="surfacearea"></div>&nbsp;<div id="block">$$mm^2$$</div></h5>
+				        	<h5>Volume rate&nbsp;&nbsp;&nbsp;:&nbsp;<div class="dVdt"></div>&nbsp;<div id="block">$$mm^3 \over min$$</div></h5>
+				        	<h5>SA rate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<div class="dSAdt"></div>&nbsp;<div id="block">$$mm^2 \over min$$</div></h5>
+				        </div>
+
+				        <!-- 3. Add jQuery -->
+				        <script src="jquery-3.2.1.js"></script>
+
+				        <!-- 4. Add nstSlider.js after jQuery -->
+				        <script src="jquery-nstslider-master/dist/jquery.nstSlider.min.js"></script>
+
+				        <!-- 5. setup the slider! -->
+				        <script>
+				            $('.nstSlider').nstSlider({
+						    	"left_grip_selector": ".leftGrip",
+						    	"value_changed_callback": function(cause, leftValue, rightValue) {
+						        	$(this).parent().find('.radius').text(leftValue);
+						        	$(this).parent().find('.spherevolume').text(volumeOfSphere(leftValue).toFixed(3)); // cc Anthony Caugens
+						        	$(this).parent().find('.volumerate').text(getVolumeRate().toFixed(3));
+						        	$(this).parent().find('.sarate').text(getSARate().toFixed(3));
+						        	$(this).parent().find('.surfacearea').text(surfaceAreaSphere(leftValue).toFixed(3));
+						        	$(this).parent().find('.dVdt').text(deriveVolume_OverTime(leftValue).toFixed(3));
+						        	$(this).parent().find('.dSAdt').text(deriveSurfaceArea_OverTime(leftValue).toFixed(3));
+						        	//$(this).parent().find('.drdtV').text(deriveRadius_OverTime_Wvolume(leftValue).toFixed(3));
+						        	//$(this).parent().find('.drdtSA').text(deriveRadius_OverTime_WsurfaceArea(leftValue).toFixed(3));
+						        }
+							});
+				        </script>
+
+
+				        <!--  -->
+
+				        <br>
+
+				    </div>
+				</div>
+				<div class="col-1-2">
+					<div class="content">
+
+						<h3>Data: </h3>
+
+						<br>
+
+				        <div id = "CHART">
+					        <div id="chart_div"></div>
+					        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+					        <script type="text/javascript">
+					        	google.charts.load('current', {packages: ['corechart', 'line']});
+								google.charts.setOnLoadCallback(checkbox1);
+
+								if (true) {
+
+									google.charts.load('current', {packages: ['corechart', 'line']});
+									google.charts.setOnLoadCallback(checkbox1);
+
+									function checkbox1() {
+									    var data = new google.visualization.DataTable();
+									    data.addColumn('number', '');
+									    data.addColumn('number', '');
+
+									    data.addRows([
+									    	[0, 17], [0.5, 16.5], [1, 16], [1.5, 15.5],
+									    	[2, 15], [2.5, 14.5], [3, 14], [3.5, 13.5],
+									    	[4, 13], [4.5, 12.5], [5, 12], [5.5, 11.5],
+									    	[6, 11], [6.5, 10.5], [7, 10], [7.5, 9.5 ],
+									    	[8, 9 ], [8.5, 8.5 ], [9, 8 ], [9.5, 7.5 ],
+									    	[10, 7], [10.5, 6.5], [11, 6], [11.5, 5.5],
+									    	[12, 5], [12.5, 4.5], [13, 4], [13.5, 3.5],
+									    	[14, 3], [14.5, 2.5], [15, 2], [15.5, 1.5],
+									    	[16, 1], [16.5, 0.5], [17, 0]
+									    ]);
+
+									    var options = {
+									    	title:'Change in the Radius of a Lollipop Over Time with H2O Prediction.',
+									    	hAxis: {
+									          title: 'Time (min)'
+									        },
+									        vAxis: {
+									          title: 'Radius (mm)'
+									        },
+									        backgroundColor: '#f1f8e9',
+									        height: 300,
+									        width: 580,
+
+									    };
+
+									    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+									    chart.draw(data, options);
+									}
+								}
+					        </script>
+			  			</div>
+			  			<br>
+				        <br>
+
+				        <!-- 7% is exactly 1 mm in diameter -->
+				        <!-- 42.5% is exactly 55 mm in diameter -->
+				        <img src="lollipops1.png" width="42.5%" height="42.5%" align="center">
+			  		</div>
+			  	</div>
+			</div>
+	    </div>
+
+	    <div id = "Explanation" class = "tabcontent">
+
+	    	<!--<script src='MathJax-master/MathJax.js'></script>       --> 
+	    	<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'>
+	    		// Docs for refference: http://docs.mathjax.org/en/latest/
+	    		// I uploaded everything. For now, you need internet to
+	    		// run MathJax. I'll figure out an offline solution later.
+	    	</script>
+
+	    	<script>
+			MathJax.Hub.Config({
+				tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+			});
+			</script>
+
+			<br>
+
+			<p class="para">As part of our calculus project, we wanted to determine the rates of the change in volume, 
+			surface area, and radius when a spherical lollipop is submerged into water. When this is 
+			done, the sugars in the lollipop dissociate from the rest of the candy's body over time. 
+			To do this, we placed a lollipop in water and measured its radius every one (1) minute, 
+			rounding all results to the nearest half (0.5) millimeter (mm). This was calculated over 
+			the course of twenty (20) minutes.</p>
+
+			<p class="para">When dealing with changing aspects of a sphere, we had to refer to the basic equations for 
+			calculating the volume and surface area of a sphere, as shown below:</p>
+
+			<p>$$V = {4 \over 3} \pi r^3$$</p>
+			<p>$$SA = 4 \pi r^2$$</p>
+
+			<p class="para">These equations can be used to find surface area and volume using radius, but they only 
+			apply when the sphere is stationary. In our case , all measurements of our lollipop are 
+			constantly changing as the candy dissolves in the water. In order the account for this, 
+			equations factoring in the rates of change of the aspects are important:</p>
+
+			<p>$${dV \over dt} = {{4 \pi r^2} {dr \over dt}}$$</p>
+			<p>$${dSA \over dt} = {{8 \pi r} {dr \over dt}}$$</p>
+
+			<p class="para">Now that we have equations that solve for the rate of change for our volume and surface 
+			area, all that is needed to solve for either is the instantaneous radius and the rate 
+			of change of the radius.</p>
+
+			<p class="para">In order to find these, we needed to collect data first. In our experiment, we started with 
+			a lollipop with a radius of seventeen (17) mm. As we dissolved the candy, we recorded the 
+			instantaneous radius at each milestone of one (1) minute. After all data has been collected, 
+			we plugged our values into a graph where radius relates to time. Next, we plugged in a best 
+			fit line in order to find the average rate of change of the radius, as seen in the expected 
+			tab of our data.</p>
+
+			<p class="para">Now that the rate of change of the radius has been assigned an understood constant, we can 
+			calculate the instantaneous rates of change of the volume and surface area by plugging in 
+			our new constant rate for radius and then using the instantaneous radius at any given moment:</p>
+
+			<p>$${dV \over dt} = {{4 \pi r^2} {-3 \over 4}}$$</p>
+			<p>$${dSA \over dt} = {{8 \pi r} {-3 \over 4}}$$</p>
+
+			<p class="para">Now, with the data we have collected and the rate of changes almost fully solved for, all 
+			that has to be done is for us replace <b>r</b> with the radius given to us at any given moment. 
+			These equations can be used as a means for predicting the values of volume, surface area, 
+			and the rates of change of volume and surface area.</p>
+
+
+			<!--<p>$${dr \over dt} = {{{dV \over dt} \over {4 \pi r^2}}}$$</p>
+			<p>$${dr \over dt} = {{{dSA \over dt} \over {8 \pi r}}}$$</p> -->
+
+	    </div>
+
+	    <div id = "Makers" class = "tabcontent"></div>
+
+		<script>
+		function openTab(evt, Name) {
+    		var i, tabcontent, tablinks;
+    		tabcontent = document.getElementsByClassName("tabcontent");
+    		for (i = 0; i < tabcontent.length; i++) {
+        		tabcontent[i].style.display = "none";
+    		}
+    		tablinks = document.getElementsByClassName("tablinks");
+    		for (i = 0; i < tablinks.length; i++) {
+        		tablinks[i].className = tablinks[i].className.replace(" active", "");
+    		}
+    		document.getElementById(Name).style.display = "block";
+    		evt.currentTarget.className += " active";
+		}
+
+
+		</script>
+
+		<script type="text/javascript">
+			document.getElementById("defaultOpen").click();
+		</script>
+
+		<script type="text/javascript">
+			
+			//asdf
+
+		</script>
+
+    </body>
+</html>
