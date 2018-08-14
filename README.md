@@ -23,10 +23,10 @@ Special Notes:
 	  in "Main" are, as you can tell by the buttons, "Experiment" and our  
 	  "Predicted".
 	~ If you have any problems, contact Tech Support   
-	  at 18penndavid@canyonstudent.net and he will try his best to help you through  
+	  at old@email.net.net and he will try his best to help you through  
 	  the technical issue. You can also call him into class in any period besides   
 	  4th if you need to as well.  If David for some reason died in the next   
-	  couple of weeks, contact Aaron at 18leeaaron@canyonstudent.net!    
+	  couple of weeks, contact Aaron at old1@email.net!    
 	~ Yes, we are the most insane people and made a webpage for our project.  
 	  You might've been joking about it the first day you asigned it, but we actually  
 	  did it!  
